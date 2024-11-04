@@ -1,0 +1,97 @@
+/* Body styling for full-page layout with centered content */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Ensure the video covers the entire background */
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place video behind the chat content */
+}
+
+/* Styling for the chat container on top of the video */
+.chat-container {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    z-index: 1; /* Ensure chat appears above video */
+}
+
+/* Chat display section styling */
+.chat-display {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgba(249, 249, 249, 0.9); /* Light background for readability */
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Input and button container */
+.chat-input-container {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+/* Input field styling */
+.chat-input {
+    padding: 10px;
+    border: none;
+    flex-grow: 1;
+    font-size: 14px;
+    border-radius: 0 0 0 8px;
+}
+
+/* Send button styling */
+button {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 0 8px 0;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Message styling */
+.message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    max-width: 80%;
+}
+
+/* User message styling */
+.user-message {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+    text-align: right;
+    color: #333;
+}
+
+/* Bot message styling */
+.bot-message {
+    background-color: #ECECEC;
+    align-self: flex-start;
+    text-align: left;
+    color: #333;
+}
