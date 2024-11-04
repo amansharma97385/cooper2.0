@@ -1,4 +1,4 @@
-require('dotenv').config();  // Load environment variables
+require('.env').config();  // Load environment variables
 
 const apiKey = process.env.API_KEY;  // Use environment variable for API key
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
