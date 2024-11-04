@@ -37,32 +37,24 @@ async function sendMessage() {
 
 async function fetchAIResponse(userInput) {
     try {
-        const response = await fetch(apiUrl, {
+        const response = await fetch('/api/chat', { // Call your Node.js API
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                contents: [
-                    {
-                        parts: [{ text: userInput }]
-                    }
-                ]
-            })
+            body: JSON.stringify({ input: userInput }) // Send user input to the backend
         });
 
         const data = await response.json();
         console.log("API Response:", data);  // Log the full response for debugging
 
-        // Check if the response structure is as expected
-        if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
-            return data.candidates[0].content.parts[0].text; // Extract the AI's response
+        if (data.message) {
+            return data.message; // Extract the AI's response
         } else {
-            // Handle unexpected format
-            return "The AI response format was not as expected: " + JSON.stringify(data);
+            return "Oops, something went wrong.";
         }
     } catch (error) {
-        console.error("Error fetching AI response:", error); // Log any errors
+        console.error("Error fetching AI response:", error);
         return "Oops, something went wrong. Please try again."; // User-friendly error message
     }
 }
